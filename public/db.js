@@ -1,10 +1,3 @@
-const indexedDB = 
-window.indexedDB ||
-window.mozIndexedDB ||
-window.webkitIndexedDB ||
-window.msIndexedDB ||
-window.shimIndexedDB;
-
 let db;
 const request = indexedDB.open("budget", 1);
 
@@ -14,7 +7,7 @@ request.onupgradeneeded = ({ target }) => {
 };
 
 request.onsuccess = ({ target }) => {
-    db = target.result;
+    db = event.target.result;
 
     // this line of code checks the status of connectivity before checking database
     if (navigator.onLine) {
@@ -48,9 +41,7 @@ function checkDatabase() {
                     "Content-Type": "application/json"
                 }
             })
-            .then(response => {
-                return response.json();
-            })
+            .then(response => response.json())
             .then(() => {
                 const transaction = db.transaction(["pending"], "readwrite");
                 const store = transaction.objectStore("pending");

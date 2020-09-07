@@ -154,8 +154,8 @@ document.querySelector("#sub-btn").onclick = function() {
 };
 
 (function () {
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register("./service-worker.js", { scope: "/"})
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("./service-worker.js", { scope: "/" })
     .then(() => console.log("Service Work registered successfully"))
     .catch(error => console.log("Service worked registeration failed:", error));
   }
