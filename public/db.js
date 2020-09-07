@@ -18,7 +18,7 @@ request.onsuccess = ({ target }) => {
 
     // this line of code checks the status of connectivity before checking database
     if (navigator.onLine) {
-        checkDB();
+        checkDatabase();
     }
 };
 
