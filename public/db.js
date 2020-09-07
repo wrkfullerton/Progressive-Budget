@@ -2,11 +2,11 @@ let db;
 const request = indexedDB.open("budget", 1);
 
 request.onupgradeneeded = ({ target }) => {
-    let db = target.result;
+    const db = event.target.result;
     db.createObjectStore("pending", { autoIncrement: true });
 };
 
-request.onsuccess = ({ target }) => {
+request.onsuccess = function (event) {
     db = event.target.result;
 
     // this line of code checks the status of connectivity before checking database
@@ -15,7 +15,7 @@ request.onsuccess = ({ target }) => {
     }
 };
 
-request.onerror = function(event) {
+request.onerror = function (event) {
     console.log("Error occured " + event.target.errorCode)
 };
 
